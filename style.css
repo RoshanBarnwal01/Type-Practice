@@ -1,0 +1,305 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    background-color: #0f1117;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.typing-container {
+    width: 90%;
+    max-width: 800px;
+
+    background-color: #171a23;
+
+    padding: 40px;
+
+    border-radius: 16px;
+
+    border: 1px solid #2a2f3a;
+}
+.typing-container h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+.timer {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.timer-label {
+    display: block;
+    font-size: 14px;
+    color: #8b93a7;
+    margin-bottom: 5px;
+}
+
+#timer {
+    font-size: 40px;
+    font-weight: bold;
+}
+#text-to-type {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #d7dbe5;
+
+    background-color: #10131a;
+
+    padding: 25px;
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+}
+#typing-input {
+    width: 100%;
+    min-height: 150px;
+
+    background-color: #10131a;
+    color: #ffffff;
+
+    border: 1px solid #2f3542;
+    border-radius: 10px;
+
+    padding: 15px;
+
+    font-size: 18px;
+    font-family: inherit;
+
+    resize: vertical;
+
+    outline: none;
+
+    margin-bottom: 25px;
+}
+#typing-input:focus {
+    border-color: #6c63ff;
+}
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+
+    margin-bottom: 25px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #8b93a7;
+    margin-bottom: 5px;
+}
+
+.stat span:last-child {
+    font-size: 28px;
+    font-weight: bold;
+}
+#restart-button {
+    display: block;
+
+    margin: 0 auto;
+
+    padding: 12px 28px;
+
+    background-color: #6c63ff;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+#restart-button:hover {
+    background-color: #574fd6;
+}
+
+.correct {
+    color: #4ade80;
+}
+
+.incorrect {
+    color: #f87171;
+}
+
+.result-screen {
+    display: none;
+
+    text-align: center;
+
+    margin-top: 30px;
+
+    padding: 30px;
+
+    background-color: #10131a;
+
+    border: 1px solid #2a2f3a;
+
+    border-radius: 12px;
+}
+
+.result-screen h2 {
+    font-size: 28px;
+
+    margin-bottom: 25px;
+}
+
+.result-stats {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 60px;
+
+    margin-bottom: 25px;
+}
+
+.result-stat {
+    text-align: center;
+}
+
+.result-label {
+    display: block;
+
+    font-size: 14px;
+
+    color: #8b93a7;
+
+    margin-bottom: 5px;
+}
+
+.result-stat span:last-child {
+    font-size: 32px;
+
+    font-weight: bold;
+}
+
+#try-again-button {
+    padding: 12px 28px;
+
+    background-color: #6c63ff;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+#try-again-button:hover {
+    background-color: #574fd6;
+}
+
+.current {
+    border-bottom: 2px solid #6c63ff;
+}
+
+.progress-container {
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #2a2f3a;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #6c63ff;
+    border-radius: 10px;
+    transition: width 0.2s ease;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8b93a7;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+
+    .typing-container {
+        width: 95%;
+        padding: 25px 18px;
+        border-radius: 12px;
+    }
+
+    .typing-container h1 {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+    #timer {
+        font-size: 34px;
+    }
+
+    #text-to-type {
+        font-size: 17px;
+        line-height: 1.6;
+        padding: 18px;
+    }
+
+    #typing-input {
+        min-height: 130px;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .stats {
+        gap: 35px;
+    }
+
+    .stat span:last-child {
+        font-size: 24px;
+    }
+
+    .result-screen {
+        padding: 25px 15px;
+    }
+
+    .result-screen h2 {
+        font-size: 24px;
+    }
+
+    .result-stats {
+        gap: 35px;
+    }
+
+    .result-stat span:last-child {
+        font-size: 28px;
+    }
+
+    .progress-text {
+        font-size: 12px;
+    }
+}
+
+#text-to-type {
+    user-select: none;
+}
