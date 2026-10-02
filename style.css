@@ -1,18 +1,37 @@
+/* =========================
+   RESET
+========================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+/* =========================
+   BODY
+========================= */
+
 body {
     min-height: 100vh;
+
     background-color: #0f1117;
+
     color: #ffffff;
+
     font-family: Arial, sans-serif;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .typing-container {
     width: 90%;
     max-width: 800px;
@@ -25,87 +44,310 @@ body {
 
     border: 1px solid #2a2f3a;
 }
+
+
+/* =========================
+   HEADING
+========================= */
+
 .typing-container h1 {
     text-align: center;
+
     font-size: 32px;
-    margin-bottom: 30px;
+
+    margin-bottom: 25px;
 }
+
+
+/* =========================
+   TIMER OPTIONS
+========================= */
+
+.timer-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+
+.time-button {
+    padding: 9px 18px;
+
+    background-color: #10131a;
+
+    color: #8b93a7;
+
+    border: 1px solid #2f3542;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.time-button:hover {
+    border-color: #6c63ff;
+
+    color: #ffffff;
+}
+
+
+.time-button.active {
+    background-color: #6c63ff;
+
+    color: #ffffff;
+
+    border-color: #6c63ff;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
 .timer {
     text-align: center;
-    margin-bottom: 30px;
+
+    margin-bottom: 25px;
 }
+
 
 .timer-label {
     display: block;
+
     font-size: 14px;
+
     color: #8b93a7;
+
     margin-bottom: 5px;
 }
 
+
 #timer {
     font-size: 40px;
+
     font-weight: bold;
 }
+
+
+.timer-warning {
+    color: #fbbf24;
+}
+
+
+.timer-danger {
+    color: #f87171;
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+#loading-message {
+    text-align: center;
+
+    color: #8b93a7;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   TEXT TO TYPE
+========================= */
+
 #text-to-type {
     font-size: 20px;
+
     line-height: 1.7;
+
     color: #d7dbe5;
 
     background-color: #10131a;
 
     padding: 25px;
+
     border-radius: 10px;
 
     margin-bottom: 20px;
+
+    user-select: none;
+
+    min-height: 150px;
 }
+
+
+.current {
+    border-bottom: 2px solid #6c63ff;
+}
+
+
+.correct {
+    color: #4ade80;
+}
+
+
+.incorrect {
+    color: #f87171;
+
+    text-decoration: underline;
+}
+
+
+/* =========================
+   TEXTAREA
+========================= */
+
 #typing-input {
     width: 100%;
+
     min-height: 150px;
 
     background-color: #10131a;
+
     color: #ffffff;
 
     border: 1px solid #2f3542;
+
     border-radius: 10px;
 
     padding: 15px;
 
     font-size: 18px;
+
     font-family: inherit;
 
-    resize: vertical;
+    resize: none;
 
     outline: none;
 
     margin-bottom: 25px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
+
 #typing-input:focus {
     border-color: #6c63ff;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 99, 255, 0.12);
 }
-.stats {
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+    margin-bottom: 25px;
+}
+
+
+.progress-bar {
+    width: 100%;
+
+    height: 8px;
+
+    background-color: #2a2f3a;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+
+#progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background-color: #6c63ff;
+
+    border-radius: 10px;
+
+    transition: width 0.2s ease;
+}
+
+
+.progress-text {
     display: flex;
-    justify-content: center;
-    gap: 60px;
+
+    justify-content: space-between;
+
+    margin-top: 8px;
+
+    font-size: 13px;
+
+    color: #8b93a7;
+}
+
+
+/* =========================
+   LIVE STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
 
     margin-bottom: 25px;
 }
 
+
 .stat {
     text-align: center;
+
+    padding: 18px;
+
+    background-color: #10131a;
+
+    border: 1px solid #2a2f3a;
+
+    border-radius: 10px;
 }
+
 
 .stat-label {
     display: block;
-    font-size: 14px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
     color: #8b93a7;
+
     margin-bottom: 5px;
 }
 
+
 .stat span:last-child {
     font-size: 28px;
+
     font-weight: bold;
 }
-#restart-button {
+
+
+/* =========================
+   MAIN BUTTON
+========================= */
+
+#restart-button,
+#try-again-button {
     display: block;
 
     margin: 0 auto;
@@ -113,25 +355,40 @@ body {
     padding: 12px 28px;
 
     background-color: #6c63ff;
+
     color: white;
 
     border: none;
+
     border-radius: 8px;
 
     font-size: 16px;
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
 }
-#restart-button:hover {
+
+
+#restart-button:hover,
+#try-again-button:hover {
     background-color: #574fd6;
+
+    transform: translateY(-2px);
 }
 
-.correct {
-    color: #4ade80;
+
+#restart-button:active,
+#try-again-button:active {
+    transform: translateY(0);
 }
 
-.incorrect {
-    color: #f87171;
-}
+
+/* =========================
+   RESULT SCREEN
+========================= */
 
 .result-screen {
     display: none;
@@ -140,7 +397,142 @@ body {
 
     margin-top: 30px;
 
-    padding: 30px;
+    padding: 35px 30px;
+
+    background-color: #10131a;
+
+    border: 1px solid #2a2f3a;
+
+    border-radius: 14px;
+}
+
+
+.result-screen h2 {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+
+.result-screen h2::after {
+    content: "Your typing performance";
+
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 14px;
+
+    font-weight: normal;
+
+    color: #8b93a7;
+}
+
+
+/* =========================
+   RESULT STATS
+========================= */
+
+.result-stats {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    margin: 30px 0;
+}
+
+
+.result-stat {
+    padding: 20px;
+
+    background-color: #171a23;
+
+    border: 1px solid #2a2f3a;
+
+    border-radius: 10px;
+}
+
+
+.result-label {
+    display: block;
+
+    font-size: 13px;
+
+    color: #8b93a7;
+
+    margin-bottom: 8px;
+}
+
+
+.result-stat span:last-child {
+    font-size: 36px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   TRY AGAIN
+========================= */
+
+#try-again-button {
+    width: 100%;
+}
+
+
+/* =========================
+   HISTORY BUTTON
+========================= */
+
+#history-button {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 12px 28px;
+
+    background-color: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #6c63ff;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+#history-button:hover {
+    background-color: #6c63ff;
+
+    transform: translateY(-2px);
+}
+
+
+#history-button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   HISTORY SECTION
+========================= */
+
+.history-section {
+    display: none;
+
+    margin-top: 30px;
+
+    padding: 25px;
 
     background-color: #10131a;
 
@@ -149,157 +541,269 @@ body {
     border-radius: 12px;
 }
 
-.result-screen h2 {
-    font-size: 28px;
+
+.history-section h2 {
+    text-align: center;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   HISTORY STATISTICS
+========================= */
+
+.statistics {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
 
     margin-bottom: 25px;
 }
 
-.result-stats {
-    display: flex;
 
-    justify-content: center;
+.stat-card {
+    padding: 18px;
 
-    gap: 60px;
+    background-color: #171a23;
 
-    margin-bottom: 25px;
-}
+    border: 1px solid #2a2f3a;
 
-.result-stat {
+    border-radius: 10px;
+
     text-align: center;
 }
 
-.result-label {
-    display: block;
 
-    font-size: 14px;
+.stat-card-label {
+    display: block;
 
     color: #8b93a7;
 
-    margin-bottom: 5px;
+    font-size: 13px;
+
+    margin-bottom: 6px;
 }
 
-.result-stat span:last-child {
-    font-size: 32px;
+
+.stat-card span:last-child {
+    font-size: 26px;
 
     font-weight: bold;
 }
 
-#try-again-button {
-    padding: 12px 28px;
 
-    background-color: #6c63ff;
+/* =========================
+   HISTORY ITEM
+========================= */
 
-    color: white;
+.history-item {
+    display: flex;
 
-    border: none;
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #2a2f3a;
+}
+
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+
+.history-info {
+    display: flex;
+
+    gap: 25px;
+}
+
+
+.history-label {
+    display: block;
+
+    font-size: 12px;
+
+    color: #8b93a7;
+
+    margin-bottom: 4px;
+}
+
+
+.history-value {
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.history-date {
+    font-size: 12px;
+
+    color: #8b93a7;
+}
+
+
+.no-history {
+    text-align: center;
+
+    color: #8b93a7;
+
+    font-size: 14px;
+
+    padding: 15px 0;
+}
+
+
+/* =========================
+   CLEAR HISTORY
+========================= */
+
+#clear-history-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 11px;
+
+    background-color: transparent;
+
+    color: #f87171;
+
+    border: 1px solid #f87171;
 
     border-radius: 8px;
 
-    font-size: 16px;
+    font-size: 14px;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
-#try-again-button:hover {
-    background-color: #574fd6;
+
+#clear-history-button:hover {
+    background-color: #f87171;
+
+    color: #ffffff;
 }
 
-.current {
-    border-bottom: 2px solid #6c63ff;
-}
 
-.progress-container {
-    margin-bottom: 25px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background-color: #2a2f3a;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#progress-fill {
-    width: 0%;
-    height: 100%;
-    background-color: #6c63ff;
-    border-radius: 10px;
-    transition: width 0.2s ease;
-}
-
-.progress-text {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    font-size: 13px;
-    color: #8b93a7;
-}
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
     body {
         align-items: flex-start;
+
         padding: 20px 0;
     }
 
+
     .typing-container {
         width: 95%;
+
         padding: 25px 18px;
+
         border-radius: 12px;
     }
 
+
     .typing-container h1 {
         font-size: 26px;
-        margin-bottom: 25px;
+
+        margin-bottom: 20px;
     }
+
+
+    .timer-options {
+        gap: 6px;
+    }
+
+
+    .time-button {
+        padding: 8px 12px;
+
+        font-size: 13px;
+    }
+
 
     #timer {
         font-size: 34px;
     }
 
+
     #text-to-type {
         font-size: 17px;
+
         line-height: 1.6;
+
         padding: 18px;
     }
 
+
     #typing-input {
         min-height: 130px;
+
         font-size: 16px;
+
         padding: 12px;
     }
 
+
     .stats {
-        gap: 35px;
+        gap: 10px;
     }
+
 
     .stat span:last-child {
         font-size: 24px;
     }
 
+
     .result-screen {
-        padding: 25px 15px;
+        padding: 28px 18px;
     }
+
 
     .result-screen h2 {
-        font-size: 24px;
+        font-size: 26px;
     }
+
 
     .result-stats {
-        gap: 35px;
+        gap: 10px;
     }
 
-    .result-stat span:last-child {
-        font-size: 28px;
+
+    .result-stat {
+        padding: 16px 10px;
     }
+
+
+    .result-stat span:last-child {
+        font-size: 30px;
+    }
+
 
     .progress-text {
         font-size: 12px;
     }
-}
 
-#text-to-type {
-    user-select: none;
+
+    .history-info {
+        gap: 12px;
+    }
+
 }

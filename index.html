@@ -2,17 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Typing Practice</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
@@ -20,21 +16,61 @@
 
         <div class="typing-container">
 
+            <!-- =========================
+                 TYPING TEST
+            ========================== -->
+
             <div id="typing-test">
 
                 <h1>Typing Practice</h1>
 
-                <div class="timer">
+                <!-- Timer Selection -->
 
-                    <span class="timer-label">Time</span>
+                <div class="timer-options">
 
-                    <span id="timer">30</span>
+                    <button class="time-button active" data-time="30">
+                        30 sec
+                    </button>
+
+                    <button class="time-button" data-time="60">
+                        1 min
+                    </button>
+
+                    <button class="time-button" data-time="120">
+                        2 min
+                    </button>
 
                 </div>
 
-                <p id="text-to-type">
-                    The quick brown fox jumps over the lazy dog.
-                </p>
+
+                <!-- Timer -->
+
+                <div class="timer">
+
+                    <span class="timer-label">
+                        Time
+                    </span>
+
+                    <span id="timer">
+                        30
+                    </span>
+
+                </div>
+
+
+                <!-- Loading Message -->
+
+                <div id="loading-message">
+                    Generating typing text...
+                </div>
+
+
+                <!-- Text -->
+
+                <p id="text-to-type"></p>
+
+
+                <!-- Typing Input -->
 
                 <textarea
                     id="typing-input"
@@ -45,16 +81,35 @@
                     autocapitalize="off"
                 ></textarea>
 
+
+                <!-- Progress -->
+
                 <div class="progress-container">
+
                     <div class="progress-bar">
+
                         <div id="progress-fill"></div>
+
                     </div>
 
+
                     <div class="progress-text">
-                        <span id="progress-count">0 / 0</span>
-                        <span id="progress-percentage">0%</span>
+
+                        <span id="progress-count">
+                            0 / 0
+                        </span>
+
+                        <span id="progress-percentage">
+                            0%
+                        </span>
+
                     </div>
+
                 </div>
+
+
+                <!-- Live Statistics -->
+
                 <div class="stats">
 
                     <div class="stat">
@@ -85,7 +140,7 @@
                 </div>
 
 
-                <!-- Restart button -->
+                <!-- Restart -->
 
                 <button id="restart-button">
                     Restart
@@ -98,16 +153,14 @@
                  RESULT SCREEN
             ========================== -->
 
-            <div
-                id="result-screen"
-                class="result-screen"
-            >
+            <div id="result-screen" class="result-screen">
 
-                <h2>Test Complete!</h2>
+                <h2>
+                    Test Complete!
+                </h2>
 
 
                 <div class="result-stats">
-
 
                     <div class="result-stat">
 
@@ -134,7 +187,6 @@
 
                     </div>
 
-
                 </div>
 
 
@@ -142,8 +194,95 @@
                     Try Again
                 </button>
 
+
+                <button id="history-button">
+                    View History
+                </button>
+
             </div>
 
+
+            <!-- =========================
+                 HISTORY
+            ========================== -->
+
+            <div id="history-section" class="history-section">
+
+                <h2>
+                    Typing History
+                </h2>
+
+
+                <!-- Overall Statistics -->
+
+                <div class="statistics">
+
+                    <div class="stat-card">
+
+                        <span class="stat-card-label">
+                            Best WPM
+                        </span>
+
+                        <span id="best-wpm">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-card-label">
+                            Average WPM
+                        </span>
+
+                        <span id="average-wpm">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-card-label">
+                            Best Accuracy
+                        </span>
+
+                        <span id="best-accuracy">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span class="stat-card-label">
+                            Total Tests
+                        </span>
+
+                        <span id="total-tests">
+                            0
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- History List -->
+
+                <div id="history-list"></div>
+
+
+                <!-- Clear History -->
+
+                <button id="clear-history-button">
+                    Clear History
+                </button>
+
+            </div>
 
         </div>
 

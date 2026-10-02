@@ -56,6 +56,13 @@ const typingTest = document.getElementById("typing-test");
 const progressFill = document.getElementById("progress-fill");
 const progressCount = document.getElementById("progress-count");
 const progressPercentage = document.getElementById("progress-percentage");
+const historySection = document.getElementById("history-section");
+const historyList = document.getElementById("history-list");
+const bestWpmElement = document.getElementById("best-wpm");
+const averageWpmElement = document.getElementById("average-wpm");
+const bestAccuracyElement = document.getElementById("best-accuracy");
+const totalTestsElement = document.getElementById("total-tests");
+const historyButton = document.getElementById("history-button");
 
 let timeRemaining = 30;
 
@@ -68,6 +75,18 @@ function startTimer() {
     timerInterval = setInterval(function () {
         timeRemaining--;
         timerElement.textContent = timeRemaining;
+
+                timerElement.classList.remove(
+            "timer-warning",
+            "timer-danger"
+        );
+
+        if (timeRemaining <= 5) {
+            timerElement.classList.add("timer-danger");
+        } else if (timeRemaining <= 10) {
+            timerElement.classList.add("timer-warning");
+        }
+
         const wpm = calculateWPM();
 
         wpmElement.textContent = Math.round(wpm);
@@ -187,6 +206,8 @@ function showResults() {
 
     const finalAccuracy = calculateAccuracy();
 
+    saveResult();
+
     finalWpmElement.textContent = Math.round(finalWpm);
 
     finalAccuracyElement.textContent =
@@ -196,6 +217,109 @@ function showResults() {
 
 }
 
+function saveResult() {
+    const finalWpm = Math.round(calculateWPM());
+    const finalAccuracy = Math.round(calculateAccuracy());
+
+    const result = {
+        wpm: finalWpm,
+        accuracy: finalAccuracy,
+        date: new Date().toLocaleString()
+    };
+
+    const history = JSON.parse(
+        localStorage.getItem("typingHistory")
+    ) || [];
+
+    history.push(result);
+
+    localStorage.setItem(
+        "typingHistory",
+        JSON.stringify(history)
+    );
+    displayHistory();
+    updateStatistics();
+}
+
+function displayHistory() {
+    const history = JSON.parse(
+        localStorage.getItem("typingHistory")
+    ) || [];
+
+    historyList.innerHTML = "";
+
+    if (history.length === 0) {
+        historyList.innerHTML =
+            '<p class="no-history">No typing tests completed yet.</p>';
+
+        return;
+    }
+
+    const recentHistory = history.slice(-5).reverse();
+
+    recentHistory.forEach(function (result) {
+        const historyItem = document.createElement("div");
+
+        historyItem.classList.add("history-item");
+
+        historyItem.innerHTML = `
+            <div class="history-info">
+
+                <div>
+                    <span class="history-label">WPM</span>
+                    <span class="history-value">${result.wpm}</span>
+                </div>
+
+                <div>
+                    <span class="history-label">Accuracy</span>
+                    <span class="history-value">${result.accuracy}%</span>
+                </div>
+
+            </div>
+
+            <span class="history-date">${result.date}</span>
+        `;
+
+        historyList.appendChild(historyItem);
+    });
+
+    historySection.style.display = "block";
+}
+function updateStatistics() {
+    const history = JSON.parse(
+        localStorage.getItem("typingHistory")
+    ) || [];
+
+    if (history.length === 0) {
+        return;
+    }
+
+    const bestWpm = Math.max(
+        ...history.map(function (result) {
+            return result.wpm;
+        })
+    );
+
+    const totalWpm = history.reduce(
+        function (sum, result) {
+            return sum + result.wpm;
+        },
+        0
+    );
+
+    const averageWpm = totalWpm / history.length;
+
+    const bestAccuracy = Math.max(
+        ...history.map(function (result) {
+            return result.accuracy;
+        })
+    );
+
+    bestWpmElement.textContent = bestWpm;
+    averageWpmElement.textContent = Math.round(averageWpm);
+    bestAccuracyElement.textContent = bestAccuracy + "%";
+    totalTestsElement.textContent = history.length;
+}
 function resetTest() {
     clearInterval(timerInterval);
 
@@ -221,6 +345,16 @@ function resetTest() {
     typingInput.focus();
 }
 
+historyButton.addEventListener("click", function () {
+    historySection.style.display = "block";
+
+    displayHistory();
+    updateStatistics();
+
+    historySection.scrollIntoView({
+        behavior: "smooth"
+    });
+});
 restartButton.addEventListener("click", function () {
     resetTest();
 });
